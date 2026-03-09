@@ -34,9 +34,14 @@ dev = [
     "tox-direct",
     "types-mock",
 ]
+mcp = [
+    "fastmcp",
+    "mcp"
+]
 
 [project.scripts]
 awardwallet = "awardwallet.__main__:main"
+awardwallet-mcp = "awardwallet.server:main"
 
 [project.urls]
 GitHub = "https://github.com/markferry/awardwallet"

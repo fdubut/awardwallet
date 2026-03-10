@@ -107,9 +107,6 @@ class TestListMethods:
         assert members == []
 
 
-# --- Tests for Get Details Methods ---
-
-
 class TestGetDetailsMethods:
     @pytest.mark.parametrize(
         "test_data", ["tests/data/user_details.json"], indirect=True

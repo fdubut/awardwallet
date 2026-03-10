@@ -24,19 +24,10 @@ def _handle_api_error(e: AwardWalletAPIError) -> Never:
 
 
 @mcp.tool()
-def list_providers() -> list[dict]:
-    """MCP tool mapping to list_providers."""
+def get_account_details(account_id: int) -> dict:
+    """MCP tool mapping to get_account_details."""
     try:
-        return [p.model_dump() for p in _client.list_providers()]
-    except AwardWalletAPIError as e:
-        _handle_api_error(e)
-
-
-@mcp.tool()
-def get_provider_info(provider_code: str) -> dict:
-    """MCP tool mapping to get_provider_info."""
-    try:
-        return _client.get_provider_info(provider_code).model_dump()
+        return _client.get_account_details(account_id).model_dump()
     except AwardWalletAPIError as e:
         _handle_api_error(e)
 
@@ -78,10 +69,19 @@ def get_connected_user_details(user_id: int) -> dict:
 
 
 @mcp.tool()
-def get_account_details(account_id: int) -> dict:
-    """MCP tool mapping to get_account_details."""
+def list_providers() -> list[dict]:
+    """MCP tool mapping to list_providers."""
     try:
-        return _client.get_account_details(account_id).model_dump()
+        return [p.model_dump() for p in _client.list_providers()]
+    except AwardWalletAPIError as e:
+        _handle_api_error(e)
+
+
+@mcp.tool()
+def get_provider_info(provider_code: str) -> dict:
+    """MCP tool mapping to get_provider_info."""
+    try:
+        return _client.get_provider_info(provider_code).model_dump()
     except AwardWalletAPIError as e:
         _handle_api_error(e)
 
